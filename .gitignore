@@ -1,3 +1,6 @@
 .token
 test.sh
 _testconfig
+BackupData
+grafana-backup-cli
+.vscode/

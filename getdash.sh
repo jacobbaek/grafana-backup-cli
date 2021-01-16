@@ -11,7 +11,6 @@ BACKUPDIR="BackupData"
 TOKEN=$(cat .token)
 URLLST=$(curl -s -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" http://$USERID:$UESRPASS@$URL/api/search | jq -r '.[] | select( .type == "dash-db" ) | .uid')
 
-#IFS=' ' read -r -a array <<< $URLLST
 dashuid=($URLLST)
 Num=1
 
@@ -20,8 +19,8 @@ if [ ! -d $BACKUPDIR ]; then
 fi
 
 for dash in ${dashuid[@]}; do
-  SUBURL="dashboards/uid/$dash"
-  echo "Do "$SUBURL
-  curl -s -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" http://$USERID:$UESRPASS@$URL/api/$SUBURL | jq .dashboard > $BACKUPDIR/$Num".json"
+  URLPATH="dashboards/uid/$dash"
+  echo "Do "$URLPATH
+  curl -s -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" http://$USERID:$UESRPASS@$URL/api/$URLPATH | jq .dashboard > $BACKUPDIR/$Num".json"
   Num=$(($Num+1))
 done

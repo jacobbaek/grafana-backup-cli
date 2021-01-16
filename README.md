@@ -1,5 +1,5 @@
 # Grafana dashboard json files Backup cli tool
-
+Backup the Grafana dashboards using API and Save into Git server
 
 # What is in
 * collect dashboard json files from grafana using API
@@ -8,7 +8,7 @@
 ## components
 * gentoken.sh : make grafana token if you don't have .token file
 * getdash.sh : collect dashboards using cURL from grafana
-* grafana-backup-cli.go : 
+* grafana-backup-cli.go : (WIP..)
   * collect dashboards using golang program from grafana 
   * git commit and push dashboards that should backup
 

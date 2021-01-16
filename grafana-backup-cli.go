@@ -96,7 +96,7 @@ func main() {
 	Token := strings.Trim(string(tokendata), "\n")
 	raw_data := apiCall("http://"+UserID+":"+UserPass+"@"+Url+"/api/search", Token)
 
-	var json_data []Dash
+	json_data := Dash{}
 
 	err_marshal := json.Unmarshal([]byte(raw_data), &json_data)
 	error_check(err_marshal)
